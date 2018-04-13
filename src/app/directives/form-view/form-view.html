@@ -1,0 +1,17 @@
+<div class="formItem" ng-repeat="formItem in FormView.form.items track by $index" ng-switch="formItem.type" layout="column">
+  <ng-form name="formItemForm">
+    <div layout="column">
+      <div class="formItem-title">
+        <h5 ng-class="{'md-title':  formItem.type === 'label', 'md-subhead': formItem.type !== 'label' }">{{ formItem.type !== 'label' ? (FormView.form.items.indexOf(formItem) + 1) + '.': '' }} {{ formItem.props.title}}
+        </h5>
+      </div>
+      <checkboxes-view flex="100" form-item="formItem" is-preview="true" form="formItemForm" ng-switch-when="checkboxes"></checkboxes-view>
+      <radio-button-view flex="100" form-item="formItem" is-preview="true" form="formItemForm" ng-switch-when="radioGroup"></radio-button-view>
+      <input-view flex="100" form-item="formItem" form="formItemForm" ng-switch-when="input"></input-view>
+      <textarea-view flex="100" form-item="formItem" form="formItemForm" ng-switch-when="textarea"></textarea-view>
+      <label-view flex="100" form-item="formItem" form="formItemForm" ng-switch-when="label"></label-view>
+      <list-view flex="100" form-item="formItem" form="formItemForm" ng-switch-when="list"></list-view>
+      <matrix-view flex="100" form-item="formItem" is-preview="true" form="formItemForm" ng-switch-when="matrix"></matrix-view>
+    </div>
+  </ng-form>
+</div>

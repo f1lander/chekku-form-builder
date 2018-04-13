@@ -1,0 +1,11 @@
+<div layout-padding layout="column">
+  <md-input-container flex>
+    <label>{{ 'TYPE' | translate }}</label>
+    <md-select ng-model="Input.item.config.type">
+      <md-option value="text">{{ 'TEXT' | translate }}</md-option>
+      <md-option value="number">{{ 'NUMBER' | translate }}</md-option>
+      <md-option value="date">{{ 'DATE' | translate }}</md-option>
+      <md-option value="time">{{ 'TIME' | translate }}</md-option>      
+    </md-select>
+  </md-input-container>
+</div>

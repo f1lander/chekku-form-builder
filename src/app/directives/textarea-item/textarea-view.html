@@ -1,0 +1,8 @@
+<md-input-container style="width: 100%;">
+  <textarea ng-readonly="true" ng-model="TextareaView.formItem.value"
+         placeholder="{{TextareaView.formItem.config.placeholder}}"
+         ng-required="TextareaView.formItem.config.required"></textarea>
+  <div ng-messages="TextareaView.form.$error">
+    <div ng-message="required">{{ 'REQUIRED' | tanslate }]</div>
+  </div>
+</md-input-container>
