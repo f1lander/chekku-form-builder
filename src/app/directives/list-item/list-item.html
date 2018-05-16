@@ -1,15 +1,11 @@
-<div layout-padding layout="column">
-  <!-- <md-input-container flex class="input-container">
-    <label>{{'PLACEHOLDER' | translate}}</label>
-    <input type="text" ng-model="Input.item.config.placeholder" />
-  </md-input-container> -->
-  <md-input-container flex>
-    <label>{{ 'DATA_SRC' | translate }}</label>
-    <md-select ng-model="List.item.dataSrcSelected">
-      <md-option><em>{{'NONE' | translate}}</em></md-option>
-      <md-option ng-repeat="dtSrc in List.dataSource" ng-value="dtSrc">
-        {{dtSrc.description}}
-      </md-option>
-    </md-select>
-  </md-input-container>
-</div>
+<md-input-container style="width: 100%" flex>
+  <label>{{ 'DATA_SRC' | translate }}</label>
+  <md-select ng-model="List.item.dataSrcSelected">
+    <md-option>
+      <em>{{'NONE' | translate}}</em>
+    </md-option>
+    <md-option ng-repeat="dtSrc in List.sources" ng-value="dtSrc">
+      {{dtSrc.description}}
+    </md-option>
+  </md-select>
+</md-input-container>

@@ -1,4 +1,4 @@
-<div layout-padding class="sortable-container" layout="column" sv-root sv-part="RadioButton.item.options">
+<div layout-padding flex class="sortable-container" layout="column" sv-root sv-part="RadioButton.item.options">
 
   <md-switch ng-model="RadioButton.item.config.direction" ng-true-value="'horizontal'" ng-false-value="'vertical'">
     {{'LAYOUT_DIRECTION' | translate}} ({{RadioButton.item.config.direction == 'horizontal' ? 'Horizontal' : 'Vertical'}})
@@ -21,6 +21,6 @@
 
   </div>
   <div layout="row" layout-align="start">
-    <md-button class="md-primary add-option-button" ng-click="RadioButton.addOption()">{{ 'ADD_OPTION' | translate }}</md-button>
+    <md-button class="md-primary add-option-button" ng-click="RadioButton.addOption()"><ng-md-icon class="icon-bar" icon="add" style="fill:#4D4D4D"></ng-md-icon></md-button>
   </div>
 </div>

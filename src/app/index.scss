@@ -37,13 +37,21 @@ form-item {
     }
   }
 
+
   .form-item-container {
-    position: relative;
-    padding-top: 30px;
+    position: relative;    
+    padding-top: 0%;
+    padding-left: 0%;
+    padding-right: 0%;
 
     .form-item-actions {
       position: absolute;
-      right: 20px;
+      right: 5px;      
+    }
+
+    .form-item-title {
+      position: absolute;
+      left: 20px;
       top: 0;
     }
 
@@ -66,6 +74,9 @@ form-view {
     color: #6c6c6c;
   }
 
+  .title-control {
+    padding-left: 5% !important;    
+  }
 
   .matrix-container {
     overflow: auto;

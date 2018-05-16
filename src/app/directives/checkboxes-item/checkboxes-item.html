@@ -1,4 +1,4 @@
-<div layout-padding class="sortable-container" layout="column" sv-root sv-part="Checkboxes.item.options">
+<div flex class="sortable-container" layout="column" sv-root sv-part="Checkboxes.item.options">
 
   <md-switch ng-model="Checkboxes.item.config.direction" ng-true-value="'horizontal'" ng-false-value="'vertical'">    
    {{'LAYOUT_DIRECTION' | translate}} ({{Checkboxes.item.config.direction == 'horizontal' ? 'Horizontal' : 'Vertical'}})
@@ -21,6 +21,8 @@
 
   </div>
   <div layout="row" layout-align="start">
-    <md-button class="md-primary add-option-button" ng-click="Checkboxes.addOption()">{{ 'ADD_OPTION' | translate }}</md-button>
+    <md-button class="md-primary add-option-button" ng-click="Checkboxes.addOption()">
+      <ng-md-icon class="icon-bar" icon="add" style="fill:#4D4D4D"></ng-md-icon>
+    </md-button>
   </div>
 </div>
