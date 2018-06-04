@@ -12,6 +12,7 @@
       scope: {
         item: '=',
         sources: '=',
+        forms: '=',
         onDelete: '&',
         onUp: '&',
         onDown: '&',
@@ -40,15 +41,16 @@
     this.typeItems = {
       input: { icon: 'input', name: 'INPUT' },
       list: { icon: 'list', name: 'LIST' },
+      formdetail: { icon: 'grid_on', name: 'FORM_DETAIL' },
       radioGroup: { icon: 'radio_button_checked', name: 'RADIO_BUTTON' },
       checkboxes: { icon: 'check_box', name: 'CHECKBOX' },
       textarea: { icon: 'insert_comment', name: 'TEXT_AREA' },
       label: { icon: 'label_outline', name: 'LABEL' },
-      form_detail: { icon: 'insert_chart', name: 'FORM_DETAIL' },
     };
     this.templates = {
       input: '<input-item item="FormItem.item"></input-item>',
       list: '<list-item sources="FormItem.sources" item="FormItem.item"><list-item>',
+      formdetail: '<formdetail-item forms="FormItem.forms" item="FormItem.item"><formdetail-item>',
       chooseFromList: '<bet-form-choose-from-list item="FormItem.item"></bet-form-choose-from-list>',
       radioGroup: '<radio-button-item item="FormItem.item"></radio-button-item>',
       matrix: '<matrix-item item="FormItem.item"></matrix-item>',
@@ -79,7 +81,7 @@
 
   FormItemCtrl.prototype._getItemTemplate = function (type) {
     var prefix = '' +
-      '<div layout="column" class="form-item-container">' +
+      '<div layout="column" style="padding-top: 0px;" class="form-item-container">' +
       '<div flex style="background-color:#CFD8DC; padding-left: 5%; border-radius: 4px;" layout="row">' +
       '<ng-md-icon flex="10" class="icon-bar" icon="'+ this.typeItems[type].icon  +'" style="fill:#262626;"></ng-md-icon>' +
       '<h4 flex style="color:#262626;">{{' +'"'+ this.typeItems[type].name +'"'+ '| translate }}</h4>' +

@@ -1,0 +1,11 @@
+<md-input-container style="width: 100%" flex>
+  <label>{{ 'FORM_DETAIL' | translate }}</label>
+  <md-select ng-model="FormDetail.item.formDetailSelected">
+    <md-option>
+      <em>{{'NONE' | translate}}</em>
+    </md-option>
+    <md-option ng-repeat="formDetail in List.forms" ng-value="formDetail">
+      {{formDetail.description}}
+    </md-option>
+  </md-select>
+</md-input-container>
