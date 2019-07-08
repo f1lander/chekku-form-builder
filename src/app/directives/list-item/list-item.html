@@ -1,6 +1,6 @@
 <md-input-container style="width: 100%" flex>
   <label>{{ 'DATA_SRC' | translate }}</label>
-  <md-select ng-model="List.item.dataSrcSelected">
+  <md-select ng-model="List.item.dataSrcSelected" ng-model-options="{trackBy: '$value._id'}">
     <md-option>
       <em>{{'NONE' | translate}}</em>
     </md-option>
