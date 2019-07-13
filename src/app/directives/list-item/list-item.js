@@ -13,7 +13,7 @@
         item: '=',
         sources:'=' 
       },
-      controller: ListItem,
+      controller: ListItemCtrl,
       controllerAs: 'List',
       bindToController: true
     };
@@ -22,7 +22,7 @@
   }
 
   function init(scope, elem, attrs, ctrl) {
-    console.log("log Atrrs", attrs, elem, scope, ctrl);
+    
   }
 
   /*@ngInject*/

@@ -2,20 +2,19 @@
   'use strict';
 
   angular.module('angularMaterialFormBuilder')
-    .directive('radioButtonView', RadioButtonView);
+    .directive('imageView', ImageView);
 
   /*@ngInject*/
-  function RadioButtonView($timeout) {
+  function ImageView($timeout) {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/directives/radio-button-item/radio-button-view.html',
+      templateUrl: 'app/directives/image-item/image-view.html',
       scope: {
         formItem: '=',
-        isPreview: '&',
         form: '='
       },
-      controller: RadioButtonViewCtrl,
-      controllerAs: 'RadioButtonView',
+      controller: ImageViewCtrl,
+      controllerAs: 'ImageView',
       bindToController: true,
       link: linker
     };
@@ -23,7 +22,7 @@
     function linker(scope, elem, attrs, ctrl) {
 
       //this timeout is placed here in order to make sure that the creator directive of this view is finished its work
-      $timeout(function () {
+      $timeout(function() {
         ctrl.init();
       }, 50);
     }
@@ -31,17 +30,15 @@
     return directive;
   }
 
-
   /*@ngInject*/
-  function RadioButtonViewCtrl(Utils) {
+  function ImageViewCtrl(Utils) {
     this.Utils = Utils;
   }
 
-  RadioButtonViewCtrl.prototype.init = function () {
+  ImageViewCtrl.prototype.init = function () {
 
     this.Utils.extend(this.formItem, {
-      config: {},
-      options: []
+      config: {}
     });
   };
 
