@@ -22,7 +22,9 @@
   }
 
   function init(scope, elem, attrs, ctrl) {
-    
+
+    // console.log("-------------------------ARGS------------------------------");
+    // console.log("log Atrrs", attrs, elem, scope, ctrl);
   }
 
   /*@ngInject*/

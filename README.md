@@ -4,6 +4,26 @@ This module enables you to easily build forms, just the way you do it in Google 
 The Module has two directives, one to create the form and the second to preview it:
 ![example1](http://i.imgur.com/i4e6KWQ.png)
 
+# Pre-reqs
+- Install [Node.js](https://nodejs.org/en/)
+
+# Getting started
+- Clone the repository
+```bash
+$ git clone --depth=1 https://github.com/f1lander/chekku-form-builder
+```
+- Install dependencies
+```bash
+$ cd chekku-form-builder
+$ npm install
+$ npm run bower-install
+```
+
+# Build
+```bash
+$ npm run build
+```
+
 ----------
 
 DEMO

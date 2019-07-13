@@ -177,6 +177,7 @@
 })(angular);
 
 (function (angular) {
+
   'use strict';
 
   RadioButtonView.$inject = ["$timeout"];
@@ -362,6 +363,7 @@
 })(angular);
 
 (function (angular) {
+
     'use strict';
 
     MatrixView.$inject = ["$timeout"];
@@ -522,6 +524,7 @@
 
   InputView.$inject = ["$timeout"];
   InputViewCtrl.$inject = ["Utils"];
+
   angular.module('angularMaterialFormBuilder')
     .directive('inputView', InputView);
 
@@ -603,8 +606,9 @@
   }
 
   function init(scope, elem, attrs, ctrl) {
-    console.log("INIT2");
-    console.log(scope, elem, attrs, ctrl);
+
+    // console.log("-------------------------ARGS------------------------------");
+    // console.log("log Atrrs", attrs, elem, scope, ctrl);
 
   }
 
@@ -758,6 +762,7 @@
 (function (angular) {
   'use strict';
 
+
   ListView.$inject = ["$timeout"];
   ListViewCtrl.$inject = ["Utils"];
   angular.module('angularMaterialFormBuilder')
@@ -767,13 +772,15 @@
   function ListView($timeout) {
     var directive = {
       restrict: 'E',
-      templateUrl: 'app/directives/list-item/list-view.html',
+
       scope: {
         formItem: '=',
         form: '='
       },
+
       controller: ListViewCtrl,
       controllerAs: 'ListView',
+
       bindToController: true,
       link: linker
     };
@@ -790,6 +797,7 @@
   }
 
   /*@ngInject*/
+
   function ListViewCtrl(Utils) {
     this.Utils = Utils;
   }
@@ -800,10 +808,11 @@
 
   ListViewCtrl.prototype.init = function () {
 
+
     this.Utils.extend(this.formItem, {
       config: {}
     });
-  
+
   };
 
 
@@ -811,6 +820,7 @@
 
 (function (angular) {
   'use strict';
+
 
   ListItemCtrl.$inject = ["Utils", "$element"];
   angular.module('angularMaterialFormBuilder')
@@ -821,28 +831,35 @@
       restrict: 'E',
       link:init,
       templateUrl: 'app/directives/list-item/list-item.html',
+
       scope: {
         item: '=',
         sources:'=' 
       },
+
       controller: ListItemCtrl,
       controllerAs: 'List',
+
       bindToController: true
     };
 
     return directive;
   }
 
+
   function init(scope, elem, attrs, ctrl) {
     
   }
+
 
   /*@ngInject*/
   function ListItemCtrl(Utils, $element) {
   this.Element = $element;   
     Utils.extend(this.item, {
       config: {
+
         type: 'list'
+
       }
     });
   }
@@ -851,6 +868,7 @@
 
 (function (angular) {
   'use strict';
+
 
   ImageView.$inject = ["$timeout"];
   ImageViewCtrl.$inject = ["Utils"];
@@ -862,12 +880,15 @@
     var directive = {
       restrict: 'E',
       templateUrl: 'app/directives/image-item/image-view.html',
+
       scope: {
         formItem: '=',
         form: '='
       },
+
       controller: ImageViewCtrl,
       controllerAs: 'ImageView',
+
       bindToController: true,
       link: linker
     };
@@ -884,11 +905,13 @@
   }
 
   /*@ngInject*/
+
   function ImageViewCtrl(Utils) {
     this.Utils = Utils;
   }
 
   ImageViewCtrl.prototype.init = function () {
+
 
     this.Utils.extend(this.formItem, {
       config: {}
@@ -900,6 +923,7 @@
 
 (function (angular) {
   'use strict';
+
 
   ImageItemCtrl.$inject = ["Utils", "$element"];
   angular.module('angularMaterialFormBuilder')
@@ -914,6 +938,7 @@
       },
       controller: ImageItemCtrl,
       controllerAs: 'Image',
+
       bindToController: true
     };
 
@@ -921,6 +946,7 @@
   }
 
   /*@ngInject*/
+
   function ImageItemCtrl(Utils, $element) {
     this.Element = $element;
 
@@ -928,6 +954,7 @@
       config: {
         allowFromGallery: false,
       }
+
     });
   }
 
@@ -1532,6 +1559,7 @@ angular.module('angularMaterialFormBuilder').run(['$templateCache', function($te
 $templateCache.put('app/directives/checkboxes-item/checkboxes-view.html','<md-input-container style="width: 100%;"><div layout="{{CheckboxesView.formItem.config.direction == \'horizontal\' ? \'column\' : \'row\'}}"><md-checkbox ng-disabled="true" style="color: black !important;" ng-repeat="option in CheckboxesView.formItem.options track by $index" ng-model="option.selected" ng-change="CheckboxesView.toggleSelectedOption(option)" aria-label="...">{{option.value}}</md-checkbox></div><div ng-messages="CheckboxesView.form.$error"><div ng-message="minSelections">{{\'MUST_SELECT\' | translate}} {{CheckboxesView.formItem.maxSelections || 1}} {{ \'ITEMS\' | translate }}</div></div></md-input-container>');
 $templateCache.put('app/directives/form-view/form-view.html','<div class="formItem" ng-repeat="formItem in FormView.form.items track by $index" ng-switch="formItem.type" layout="column"><ng-form name="formItemForm"><div layout="column"><div class="formItem-title"><h5 ng-class="{\'md-title\': formItem.type === \'label\', \'md-subhead\': formItem.type !== \'label\' }">{{ formItem.type !== \'label\' ? (FormView.form.items.indexOf(formItem) + 1) + \'.\': \'\' }} {{ formItem.props.title}}</h5></div><checkboxes-view flex="100" form-item="formItem" is-preview="true" form="formItemForm" ng-switch-when="checkboxes"></checkboxes-view><radio-button-view flex="100" form-item="formItem" is-preview="true" form="formItemForm" ng-switch-when="radioGroup"></radio-button-view><input-view flex="100" form-item="formItem" form="formItemForm" ng-switch-when="input"></input-view><textarea-view flex="100" form-item="formItem" form="formItemForm" ng-switch-when="textarea"></textarea-view><label-view flex="100" form-item="formItem" form="formItemForm" ng-switch-when="label"></label-view><image-view flex="100" form-item="formItem" form="formItemForm" ng-switch-when="image"></image-view><sign-view flex="100" form-item="formItem" form="formItemForm" ng-switch-when="signature"></sign-view><list-view flex="100" form-item="formItem" form="formItemForm" ng-switch-when="list"></list-view><formdetail-view flex="100" form-item="formItem" form="formItemForm" ng-switch-when="formdetail"><matrix-view flex="100" form-item="formItem" is-preview="true" form="formItemForm" ng-switch-when="matrix"></matrix-view></formdetail-view></div></ng-form></div>');
 $templateCache.put('app/directives/form-items-container/form-items-container.html','<div><form-item ng-repeat="item in container.form.items track by $index" type="{{item.type}}" item="item" index="$index" on-delete="container.delete(item, index)" on-up="container.up(item, index)" on-down="container.down(item, index)"></form-item></div>');
+
 $templateCache.put('app/directives/formDetail-item/formDetail-item.html','<md-input-container style="width: 100%" flex=""><label>{{ \'FORM_DETAIL\' | translate }}</label><md-select ng-model="FormDetail.item.formDetailSelected"><md-option><em>{{\'NONE\' | translate}}</em></md-option><md-option ng-repeat="formDetail in List.forms" ng-value="formDetail">{{formDetail.description}}</md-option></md-select></md-input-container>');
 $templateCache.put('app/directives/formDetail-item/formDetail-view.html','');
 $templateCache.put('app/directives/input-item/input-item.html','<div layout="column" layout-padding=""><div layout="row"><div flex=""><md-input-container style="width:100%" flex="100"><label>{{ \'TYPE\' | translate }}</label><md-select ng-change="InputItem.inputTypeChanges()" ng-model="InputItem.item.config.type"><md-option value="text">{{ \'TEXT\' | translate }}</md-option><md-option value="number">{{ \'NUMBER\' | translate }}</md-option><md-option value="date">{{ \'DATE\' | translate }}</md-option><md-option value="time">{{ \'TIME\' | translate }}</md-option><md-option value="formula">Formula</md-option></md-select></md-input-container></div><div flex=""><md-button style="width:100%" ng-click="showHelp = !showHelp" ng-show="InputItem.item.config.type === \'formula\'" md-no-ink="" class="md-primary">{{\'SEE_EXAMPLE\' | translate}}</md-button></div></div><md-content ng-show="showHelp" ng-if="InputItem.item.config.type === \'formula\'" class="animated fadeIn jide md-padding" layout="column"><h2 class="md-title">{{\'FORMULA_EXAMPLE\' | translate }}</h2><md-chips><md-chip>{{\'PRICE\' | translate}} * {{\'QTY\' | translate}}</md-chip></md-chips><p class="note">{{\'FORMULA_EXAMPLE_TEXT\' | translate}}</p></md-content><md-input-container ng-if="InputItem.item.config.type === \'formula\'"><md-chips md-on-add="InputItem.constructedFormula()" md-on-remove="InputItem.constructedFormula()" class="no-padding" md-removable="true" ng-model="InputItem.item.config.formula" md-autocomplete-snap="" md-transform-chip="InputItem.transformChip($chip)" md-require-match="InputItem.autocompleteDemoRequireMatch()"><md-autocomplete md-selected-item="InputItem.selectedItem" md-search-text="InputItem.searchText" md-items="item in InputItem.querySearch(InputItem.searchText)" md-item-text="item.name" placeholder="Busca un campo"><span md-highlight-text="InputItem.searchText">{{item.name}}{{item.label || \'\'}}</span></md-autocomplete><md-chip-template><span><strong ng-class="{\'highlight-symbol\': $chip.field == \'*\' || $chip.field == \'/\' || $chip.field == \'-\' || $chip.field == \'+\'}" "="">{{$chip.name}}</strong></span></md-chip-template></md-chips></md-input-container></div>');
@@ -1550,3 +1578,4 @@ $templateCache.put('app/directives/sign-item/sign-item.html','');
 $templateCache.put('app/directives/sign-item/sign-view.html','<div style="width: 100%;"><img ng-hide="SignView.formItem.value" class="img-responsive signature-img" src="images/signature.svg"> <img ng-show="SignView.formItem.value" class="img-responsive chekku-logo-nav2" src="{{ blobFile }}" type="image/svg+xml" width="200px" height="100px"></div>');
 $templateCache.put('app/directives/image-item/image-item.html','<md-input-container class="custom-padding-left"><md-checkbox ng-model="Image.item.config.allowFromGallery">{{ "ALLOW_FROM_GALLERY" | translate }}</md-checkbox></md-input-container>');
 $templateCache.put('app/directives/image-item/image-view.html','<div style="width: 100%;"><img ng-hide="ImageView.formItem.value" src="images/picture.svg"> <img ng-show="ImageView.formItem.value" class="img-responsive modal-checkin-img" src="{{ ImageView.formItem.value }}"></div>');}]);
+
