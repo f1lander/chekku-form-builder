@@ -33,7 +33,16 @@
   /*@ngInject*/
   function InputViewCtrl(Utils) {
     this.Utils = Utils;
+    
   }
+
+  InputViewCtrl.prototype.typeParse = function(_type){
+    return _type == 'formula' ? 'text' : _type;
+  };
+
+  InputViewCtrl.prototype.valueParse = function(_type, value, _formula){
+    return _type == 'formula' && !value ? _formula : value;
+  };
 
   InputViewCtrl.prototype.init = function () {
 

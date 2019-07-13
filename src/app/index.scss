@@ -2,6 +2,25 @@
 
 $button-dim: 36px;
 
+.highlight-symbol {
+  color:dodgerblue !important;
+  font-size: 18px;
+}
+
+.custom-padding-left {
+  padding-left: 24px !important;
+}
+.no-padding {
+  md-chip {
+    padding-right:10px !important;
+  }
+ 
+  .md-chip-remove-container {
+    display: none !important;
+    padding-right: 0px !important
+  }
+}
+
 .main-view {
   .content {
 
@@ -37,6 +56,9 @@ form-item {
     }
   }
 
+  .add-option-button {
+    width: 100% !important;
+  }
 
   .form-item-container {
     position: relative;    
@@ -44,6 +66,15 @@ form-item {
     padding-left: 0%;
     padding-right: 0%;
 
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+    .top-form-item {
+      background-color:#CFD8DC; 
+      padding-left: 5%;
+      border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+    }
     .form-item-actions {
       position: absolute;
       right: 5px;      

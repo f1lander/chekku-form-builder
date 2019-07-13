@@ -1,9 +1,9 @@
 <md-input-container style="width: 100%;">
   <div layout="{{CheckboxesView.formItem.config.direction == 'horizontal' ? 'column' : 'row'}}">
-    <md-checkbox disabled style="color: black !important;" ng-repeat="option in CheckboxesView.formItem.options track by $index"
+    <md-checkbox ng-disabled="true" style="color: black !important;" ng-repeat="option in CheckboxesView.formItem.options track by $index"
                  ng-model="option.selected"
-                 ng-change="CheckboxesView.toggleSelectedOption(option)"
-                 ng-disabled="CheckboxesView.disableOptions && !option.selected"
+                 ng-change="CheckboxesView.toggleSelectedOption(option)"                
+                
                  aria-label="...">{{option.value}}</md-checkbox>
   </div>
 

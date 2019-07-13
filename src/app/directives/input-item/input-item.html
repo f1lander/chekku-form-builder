@@ -1,9 +1,47 @@
-  <md-input-container style="width: 100%" flex>
-    <label>{{ 'TYPE' | translate }}</label>
-    <md-select ng-model="Input.item.config.type">
-      <md-option value="text">{{ 'TEXT' | translate }}</md-option>
-      <md-option value="number">{{ 'NUMBER' | translate }}</md-option>
-      <md-option value="date">{{ 'DATE' | translate }}</md-option>
-      <md-option value="time">{{ 'TIME' | translate }}</md-option>      
-    </md-select>
+<div layout="column" layout-padding>
+  <div layout="row">
+    <div flex>
+      <md-input-container style="width:100%" flex="100">
+        <label>{{ 'TYPE' | translate }}</label>
+        <md-select ng-change="InputItem.inputTypeChanges()" ng-model="InputItem.item.config.type">
+          <md-option value="text">{{ 'TEXT' | translate }}</md-option>
+          <md-option value="number">{{ 'NUMBER' | translate }}</md-option>
+          <md-option value="date">{{ 'DATE' | translate }}</md-option>
+          <md-option value="time">{{ 'TIME' | translate }}</md-option>
+          <md-option value="formula">Formula</md-option>
+        </md-select>
+      </md-input-container>
+    </div>
+    <div flex>
+      <md-button style="width:100%" ng-click="showHelp = !showHelp" ng-show="InputItem.item.config.type === 'formula'" md-no-ink class="md-primary">{{'SEE_EXAMPLE'
+        | translate}}</md-button>
+    </div>
+  </div>
+
+  <md-content ng-show="showHelp" ng-if="InputItem.item.config.type === 'formula'" class="animated fadeIn jide md-padding"
+    layout="column">
+    <h2 class="md-title">{{'FORMULA_EXAMPLE' | translate }}</h2>
+    <md-chips>
+      <md-chip>{{'PRICE' | translate}} * {{'QTY' | translate}} </md-chip>
+    </md-chips>
+    <p class="note">
+      {{'FORMULA_EXAMPLE_TEXT' | translate}}
+    </p>
+  </md-content>
+  <md-input-container ng-if="InputItem.item.config.type === 'formula'">
+    <md-chips md-on-add="InputItem.constructedFormula()" md-on-remove="InputItem.constructedFormula()" class="no-padding"
+      md-removable="true" ng-model="InputItem.item.config.formula" md-autocomplete-snap md-transform-chip="InputItem.transformChip($chip)"
+      md-require-match="InputItem.autocompleteDemoRequireMatch()">
+      <md-autocomplete md-selected-item="InputItem.selectedItem" md-search-text="InputItem.searchText" md-items="item in InputItem.querySearch(InputItem.searchText)"
+        md-item-text="item.name" placeholder="Busca un campo">
+        <span md-highlight-text="InputItem.searchText">{{item.name}}{{item.label || ''}}</span>
+      </md-autocomplete>
+      <md-chip-template>
+        <span>
+          <strong ng-class="{'highlight-symbol': $chip.field == '*' || $chip.field == '/' || $chip.field == '-' || $chip.field == '+'}"">{{$chip.name}}</strong>
+        </span>
+       
+      </md-chip-template>
+    </md-chips>
   </md-input-container>
+</div>
