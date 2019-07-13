@@ -1,11 +1,20 @@
-<!-- <md-input-container style="width: 100%;">
-    <md-select ng-model="List.item.dataSrcSelected" ng-disabled="true" placeholder="{{ListView.formItem.dataSrcSelected.title}}">             
-    </md-select>
-</md-input-container> -->
-<md-input-container style="width: 100%;">
-    <input ng-readonly="true" ng-model="ListView.formItem.value"          
-           placeholder="{{ListView.formItem.dataSrcSelected.title}}"/>
-    <div ng-messages="ListView.form.$error">
-      <div ng-message="required">{{ 'REQUIRED' | translate}}</div>
-    </div>
-  </md-input-container>
+<div layout="column">
+  <div>
+    <md-input-container style="width: 100%;">
+      <label>{{'DESCRIPTION' | translate}}</label>
+      <input ng-model-options="{ getterSetter: true }" ng-readonly="true" ng-model="ListView.valueParse(ListView.formItem)" />
+      <div ng-messages="ListView.form.$error">
+        <div ng-message="required">{{ 'REQUIRED' | translate}}</div>
+      </div>
+    </md-input-container>
+  </div>
+  <div ng-if="ListView.formItem.references" style="padding-left:20px" ng-repeat="item in ListView.formItem.references">
+    <md-input-container style="width: 100%;">
+      <label>{{item.title}}</label>
+      <input ng-readonly="true" ng-model="item.value" />
+      <div ng-messages="ListView.form.$error">
+        <div ng-message="required">{{ 'REQUIRED' | translate}}</div>
+      </div>
+    </md-input-container>
+  </div>
+</div>

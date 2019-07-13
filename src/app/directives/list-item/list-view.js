@@ -35,6 +35,10 @@
     this.Utils = Utils;
   }
 
+  ListViewCtrl.prototype.valueParse = function(item) {
+    return item.value || (item.dataSrcSelected ? item.dataSrcSelected.title : "");
+  };
+
   ListViewCtrl.prototype.init = function () {
 
     this.Utils.extend(this.formItem, {

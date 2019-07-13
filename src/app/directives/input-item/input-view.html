@@ -1,9 +1,10 @@
-<md-input-container style="width: 100%;">
-  <input ng-readonly="true" ng-model="InputView.formItem.value"
-         type="{{InputView.formItem.config.type}}"
-         placeholder="{{InputView.formItem.config.placeholder}}"
-         ng-required="InputView.formItem.config.required" />
-  <div ng-messages="InputView.form.$error">
-    <div ng-message="required">{{ 'REQUIRED' | translate}}</div>
-  </div>
-</md-input-container>
+
+  <md-input-container style="width: 100%;">
+    
+    <input ng-readonly="true" ng-model-options="{ getterSetter: true }" ng-model="InputView.valueParse(InputView.formItem.config.type, InputView.formItem.value, InputView.formItem.props.formula)"
+      type="{{InputView.typeParse(InputView.formItem.config.type)}}" placeholder="{{InputView.formItem.config.placeholder}}"
+      ng-required="InputView.formItem.config.required" />
+    <div ng-messages="InputView.form.$error">
+      <div ng-message="required">{{ 'FIELD_REQUIRED' | translate}}</div>
+    </div>
+  </md-input-container>
