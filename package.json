@@ -2,7 +2,7 @@
   "name": "angularMaterialFormBuilder",
   "version": "0.0.0",
   "dependencies": {
-    "shelljs": "^0.8.1"
+    "shelljs": "^0.8.5"
   },
   "scripts": {
     "test": "gulp test",
